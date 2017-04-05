@@ -6,5 +6,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'body.component.html',
 })
 export class BodyComponent  {
-  
+
+  mostrar: boolean = true;
+  texto: string = "Un gran poder requiete una gran resposabilidad.";
+  autor: string = "Ben Parker";
+
+  personajes:string[] = ["Spiderman", "Venon", "Wolverine"];
 }
