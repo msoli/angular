@@ -9,7 +9,7 @@ import {AppRoutingModule} from './app.routes';
 
 
 // servicios
-
+import {HeroesService} from './servicios/heroes.service';
 
 // componentes
 import {AppComponent} from './app.component';
@@ -35,7 +35,7 @@ import {HeroesComponent} from './components/heroes/heroes.component';
     AppRoutingModule,
     // APP_ROUTING // si se utliza la constante
   ],
-  providers: [],
+  providers: [HeroesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
