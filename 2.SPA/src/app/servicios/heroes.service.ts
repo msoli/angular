@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-
 import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/filter';
 
 export class Hero {
   nombre: string;
@@ -97,4 +97,19 @@ export class HeroesService {
   getHeroesObs(): Observable<Hero[]> {
     return Observable.of<Hero[]>(HEROES);
   }
+
+  getHeroe(index: string): Hero {
+    return HEROES[index];
+  }
+
+  searchHero(search: string): Observable<Hero[]> {
+    return Observable.of<Hero[]>(HEROES)
+      .map(response =>
+          // {
+          // se filtra una vez mas por que tenemos un un array hero[], y queremos filtra por hero
+          response.filter(item => item.nombre.toLowerCase().indexOf(search.toLowerCase()) >= 0)
+        // }
+      );
+  }
+
 }
