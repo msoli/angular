@@ -18,20 +18,21 @@ import 'rxjs/add/operator/switchMap';
 })
 export class NavbarComponent implements OnInit {
 
+  heroes: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
 
   constructor(private heroesService: HeroesService) {
   }
 
-  buscarHeroe(buscarTexto: string) {
+  buscarHeroe(buscarTexto: string): void {
     this.searchTerms.next(buscarTexto);
   }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
 
-    this.searchTerms
+    this.heroes = this.searchTerms
       .debounceTime(300)        // wait 300ms after each keystroke before considering the term
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time the term changes
@@ -40,10 +41,11 @@ export class NavbarComponent implements OnInit {
         // or the observable of empty heroes if there was no search term
         : Observable.of<Hero[]>([]))
       .catch(error => {
-        // TODO: add real error handling
         console.log(error);
         return Observable.of<Hero[]>([]);
-      }).subscribe(item => console.log(item));
+      });
+
+    this.heroes.subscribe(item => console.log(item));
   }
 
 
