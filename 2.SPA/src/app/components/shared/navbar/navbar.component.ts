@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero, HeroesService} from '../../../servicios/heroes.service';
 
-import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {Router} from '@angular/router';
+
 
 // Observable class extensions
 import 'rxjs/add/observable/of';
+
 // Observable operators
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
@@ -18,11 +19,10 @@ import 'rxjs/add/operator/switchMap';
 })
 export class NavbarComponent implements OnInit {
 
-  heroes: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
 
-  constructor(private heroesService: HeroesService) {
+  constructor(private router: Router) {
   }
 
   buscarHeroe(buscarTexto: string): void {
@@ -32,20 +32,25 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.heroes = this.searchTerms
-      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
+    // this.heroes =
+    this.searchTerms
+      // .debounceTime(0)     // esperamos 0 por que es hasta que se presione enter
       .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => term   // switch to new observable each time the term changes
-        // return the http search observable
-        ? this.heroesService.searchHero(term)
-        // or the observable of empty heroes if there was no search term
-        : Observable.of<Hero[]>([]))
-      .catch(error => {
-        console.log(error);
-        return Observable.of<Hero[]>([]);
-      });
+      .subscribe(term => term
+        ? this.router.navigate(['buscar', term])
+        : ''
+      );
+    // .switchMap(term => term   // switch to new observable each time the term changes
+    //   // return the http search observable
+    //   ?   this.heroesService.searchHero(term)
+    //   // or the observable of empty heroes if there was no search term
+    //   : Observable.of<Hero[]>([]))
+    // .catch(error => {
+    //   console.log(error);
+    //   return Observable.of<Hero[]>([]);
+    // });
 
-    this.heroes.subscribe(item => console.log(item));
+    // this.heroes.subscribe(item => console.log(item));
   }
 
 
