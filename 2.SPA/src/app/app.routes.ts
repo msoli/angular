@@ -21,7 +21,7 @@ const APP_ROUTES: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(APP_ROUTES)// usehash para usar el # y ser mas eficiente para el manejo de variables
+    RouterModule.forRoot(APP_ROUTES)// use hash para usar el # y ser mas eficiente para el manejo de variables
   ],
   exports: [
     RouterModule
