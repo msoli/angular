@@ -21,7 +21,10 @@ export class SpotifyService {
 
     return this.http.get(url)
       .map(res => {
-        console.log(res);
+        this.artistas = res.json().artists.items;
+        console.log(this.artistas);
+
+        return this.artistas;
       });
   }
 }
