@@ -22,10 +22,13 @@ export class SearchComponent implements OnInit {
 
 
   buscarTermino() {
+
+
     this.spotifyService.getArtistas(this.termino)
       .subscribe(item => {
-        console.log(item);
+        // console.log(item);
       });
+
   }
 
 }
