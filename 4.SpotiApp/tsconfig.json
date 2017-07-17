@@ -15,10 +15,11 @@
     "lib": [
       "es2016",
       "dom"
-    ],
-    "exclude": [
-      "../node_modules"
-    ],
-    "compilerOnSave": false
+    ]
+//  ,
+//    "exclude": [
+//      "../node_modules"
+//    ],
+//    "compilerOnSave": false
   }
 }

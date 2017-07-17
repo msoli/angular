@@ -12,14 +12,16 @@ const ROUTES: Routes = [
   {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 
-@NgModule({
-  imports: [
-    RouterModule.forRoot(ROUTES)
-  ],
-  exports: [
-    RouterModule
-  ],
-})
-export class RoutingModule {
-}
+export const APP_ROUTING = RouterModule.forRoot(ROUTES, {useHash: true});
+
+// @NgModule({
+//   imports: [
+//     RouterModule.forRoot(ROUTES, {useHash: true})
+//   ],
+//   exports: [
+//     RouterModule
+//   ],
+// })
+// export class RoutingModule {
+// }
 

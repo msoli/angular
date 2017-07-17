@@ -5,7 +5,7 @@ import {SpotifyService} from '../../services/spotify.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  providers: [SpotifyService]
+  // providers: [SpotifyService]//si aqui se coloca ya no actua como singleton!!
 })
 export class SearchComponent implements OnInit {
 

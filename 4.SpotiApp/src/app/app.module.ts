@@ -3,7 +3,8 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
-import {RoutingModule} from './app.routes';
+import {APP_ROUTING} from './app.routes';
+// import {RoutingModule} from './app.routes';
 
 import {AppComponent} from './app.component';
 import {SpotifyService} from './services/spotify.service';
@@ -26,7 +27,8 @@ import { ArtistaComponent } from './components/artista/artista.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RoutingModule
+    APP_ROUTING
+    // RoutingModule
   ],
   providers: [SpotifyService],
   bootstrap: [AppComponent]
