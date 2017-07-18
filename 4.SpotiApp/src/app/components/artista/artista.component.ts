@@ -9,7 +9,7 @@ import {SpotifyService} from '../../services/spotify.service';
 export class ArtistaComponent implements OnInit {
 
   artista: any;
-  tracks: any;
+  tracks: any[];
 
   constructor(private activatedRouter: ActivatedRoute, private  spotifyService: SpotifyService) {
   }
@@ -29,8 +29,6 @@ export class ArtistaComponent implements OnInit {
 
         this.spotifyService.getTop(id)
           .subscribe(data2 => this.tracks = data2);
-
-
       });
 
   }

@@ -12,7 +12,7 @@ export class SpotifyService {
   urlBusqueda: string = 'https://api.spotify.com/v1/search';
   urlArtista: string = '	https://api.spotify.com/v1/artists/';
 
-  token: string = 'Bearer BQBDfVBjGKd2uZXdVf9WQgzqGPLxphE3HSoGKJEPOrJ_ZID8S1iU-Fq0D8Enwmw5YIf4lkpL5tFFMb4CStuyZg';
+  token: string = 'Bearer BQCsQEU5JNwfhM-H7TgNX9NYgqbqDaFoLvwqN1SHqg_k5DD4lZJ6JXOgsZarjYAYaCYGDSPkJbY1-GfXmB1n9w  ';
 
   constructor(private http: Http) {
   }
@@ -44,7 +44,6 @@ export class SpotifyService {
     return this.http.get(url, {headers})
       .map(res => {
         // console.log(res.json());
-
         return res.json();
         // return this.artistas;
       });
@@ -59,10 +58,7 @@ export class SpotifyService {
 
     return this.http.get(url, {headers})
       .map(res => {
-         // console.log(res.json().tracks);
-
-        return res.json();
-        // return this.artistas;
+        return res.json().tracks;
       });
   }
 }
