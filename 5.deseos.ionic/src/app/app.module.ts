@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import {MyApp} from './app.component';
 
-import {ContactPage} from '../pages/contact/contact';
 import {TabsPage} from '../pages/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
@@ -13,13 +12,21 @@ import {PendientesComponent} from '../pages/pendientes/pendientes.component';
 import {TerminadosComponent} from "../pages/termiados/terminados.component";
 import {ListaDeseosService} from "./services/lista-deseos.service";
 
+import {AgregarComponent} from '../pages/agregar/agregar.component';
+import {PlaceholderPipe} from "./pipes/placeholder.pipe";
+import {DetalleComponent} from "../pages/detalle/detalle.component";
+import {PendientesPipe} from "./pipes/pendientes.pipe";
+
 @NgModule({
   declarations: [
     MyApp,
-    ContactPage,
     PendientesComponent,
     TerminadosComponent,
-    TabsPage
+    AgregarComponent,
+    TabsPage,
+    PlaceholderPipe,
+    DetalleComponent,
+    PendientesPipe
   ],
   imports: [
     BrowserModule,
@@ -28,10 +35,11 @@ import {ListaDeseosService} from "./services/lista-deseos.service";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ContactPage,
     TabsPage,
     PendientesComponent,
-    TerminadosComponent
+    TerminadosComponent,
+    AgregarComponent,
+    DetalleComponent
   ],
   providers: [
     StatusBar,
