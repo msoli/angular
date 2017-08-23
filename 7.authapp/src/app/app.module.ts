@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { ProtegidaComponent } from './components/protegida/protegida.component';
 import { ROUTING} from './components/app.routes';
+import {AuthService} from './services/auth.service';
+import {AuthGuardService} from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,10 @@ import { ROUTING} from './components/app.routes';
     BrowserModule,
     ROUTING
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
