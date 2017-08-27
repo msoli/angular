@@ -1,20 +1,33 @@
-<h4>Formularios <small>template</small></h4>
+<h4>Formularios
+  <small>template</small>
+</h4>
 <hr>
-<form  (ngSubmit)="guardar()" >
+<form (ngSubmit)="guardar(forma)" #forma="ngForm">
 
   <div>
 
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Nombre</label>
+    <div class="form-group row  " >
+      <label class="col-2 col-form-label ">Nombre</label>
       <div class="col-8">
 
-        <input class="form-control"
+        <input class="form-control "
+               [ngClass]="{'is-invalid': (nombre.errors?.required || nombre.errors?.minlength) && !nombre.untouched }"
                type="text"
                name="nombre"
-               ngModel
+               [(ngModel)]="usuario.nombre"
                required
                minlength="5"
-               placeholder="Nombre">
+               placeholder="Nombre"
+               #nombre="ngModel">
+
+
+        <div class="invalid-feedback" *ngIf="nombre.errors?.required && !nombre.untouched">
+          Este campo es requerido
+        </div>
+
+        <div class="invalid-feedback" *ngIf="nombre.errors?.minlength && !nombre.untouched">
+          Este campo es requiere {{nombre.errors.minlength.requiredLength}} caracteres
+        </div>
       </div>
     </div>
 
@@ -24,7 +37,17 @@
 
         <input class="form-control"
                type="text"
+               [ngClass]="{'is-invalid': apellido.errors?.required  && !apellido.untouched }"
+
+               name="apellido"
+               [(ngModel)]="usuario.apellido"
+               required
+               #apellido="ngModel"
                placeholder="Apellido">
+
+        <div class="invalid-feedback" *ngIf="apellido.errors?.required && !apellido.untouched">
+          Este campo es requerido
+        </div>
       </div>
     </div>
 
@@ -32,20 +55,36 @@
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Correo</label>
-    <div class="col-md-8">
+    <div class="col-md-8 ">
 
-      <input class="form-control"
+      <input class="form-control "
              type="email"
+             name="correo"
+             [ngClass]="{'is-invalid': (correo.errors?.required || correo.errors?.pattern) && !correo.untouched }"
+
+             [(ngModel)]="usuario.email"
+             required
+             #correo="ngModel"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
              placeholder="Correo electrónico">
+
+      <div class="invalid-feedback" *ngIf="correo.errors?.required && !correo.untouched">
+        Este campo es requerido
+      </div>
+      <div class="invalid-feedback" *ngIf="correo.errors?.pattern && !correo.untouched">
+        Este campo debe ser un email valido
+      </div>
     </div>
   </div>
-
 
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary">
+      <button type="submit"
+              [disabled]="!forma.valid"
+
+              class="btn btn-outline-primary">
         Guardar
       </button>
     </div>
