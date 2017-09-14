@@ -8,12 +8,14 @@ import {ROUTING} from './app.routes';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {HeroesService} from './services/heroes.service';
+import { KeysPipe } from './pipes/keys.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroeComponent
+    HeroeComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

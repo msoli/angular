@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {Heroe} from '../interface/heroe.interface';
 import 'rxjs/Rx';
-import {Observable} from "rxjs/Observable";
+
 
 @Injectable()
 export class HeroesService {
@@ -45,12 +45,22 @@ export class HeroesService {
       });
   }
 
-  getHeroe(key$: string)  {
+  getHeroe(key$: string) {
 
     let url = `${this.fireHeroeUrl}/${key$}.json`;
 
     return this.http.get(url).map(res => {
       // console.log(res.json());
+      return res.json();
+    });
+
+  }
+
+
+  getHeroes() {
+
+
+    return this.http.get(this.fireHeroesUrl).map(res => {
       return res.json();
     });
 
