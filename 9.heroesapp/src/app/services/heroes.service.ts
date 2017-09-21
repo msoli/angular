@@ -66,5 +66,11 @@ export class HeroesService {
 
   }
 
+  borrarHeroe(key$: string) {
+    let url = `${this.fireHeroeUrl}/${key$}.json`;
+
+    return this.http.delete(url).map(res => res.json());
+  }
+
 }
 ``
