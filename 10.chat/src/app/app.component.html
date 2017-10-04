@@ -3,11 +3,11 @@
   <hr>
 
 
-  <app-login></app-login>
+  <app-login *ngIf="!_chatService.usuario"></app-login>
 
-  <!--<div *ngIf="_chatService.usuario" class="chat-window">-->
-    <!--<app-chat></app-chat>-->
-  <!--</div>-->
+  <div *ngIf="_chatService.usuario" class="chat-window">
+    <app-chat></app-chat>
+  </div>
 
 
 
