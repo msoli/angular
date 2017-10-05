@@ -5,11 +5,11 @@
 
   <div
     *ngFor="let chat of _chatService.chats | async"
-    class="" [ngClass]="{'text-right': _chatService.usuario.nombre === chat.nombre}">
+    class="" [ngClass]="{'text-right': _chatService.usuario.uid === chat.uid}">
 
     <span class="badge"
-          [ngClass]="{'badge-primary': _chatService.usuario.nombre === chat.nombre,
-    'badge-success': _chatService.usuario.nombre !== chat.nombre}">
+          [ngClass]="{'badge-primary': _chatService.usuario.uid === chat.uid,
+    'badge-success': _chatService.usuario.uid !== chat.uid}">
     {{chat.nombre}}
     </span>
 

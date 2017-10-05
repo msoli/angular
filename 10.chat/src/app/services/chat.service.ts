@@ -36,8 +36,9 @@ export class ChatService {
   agregarMensaje(texto: string) {
 
     const mensaje: Mensaje = {
-      nombre: 'Miguel',
-      mensaje: texto
+      nombre: this.usuario.displayName,
+      mensaje: texto,
+      uid: this.usuario.uid
     };
 
     return this.chats.push(mensaje);
@@ -56,6 +57,9 @@ export class ChatService {
 
 
   logout() {
+    localStorage.removeItem('usuario');
+    this.usuario = null;
+
     this.afAuth.auth.signOut();
   }
 }
